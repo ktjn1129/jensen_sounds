@@ -1,0 +1,420 @@
+html{
+  font-size: 100%;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+body{
+  background-color: #f5f5f5;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+li{
+  list-style: none;
+}
+
+#header .header_main{
+  display: flex;
+  justify-content: space-between;
+  background-color: #ababab;
+  height: 50px;
+  align-items: center;
+}
+
+#header .header_main .site_title{
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 1.25rem;
+  margin-left: 30px;
+}
+
+#header .header_main ul{
+  display: flex;
+  margin-right: 20px;
+}
+
+#header .header_main li{
+  font-size: 1.1rem;
+  margin-right: 15px;
+}
+
+#header .header_main li :hover{
+  opacity: 0.6;
+}
+
+#header .header_sub{
+  background-color: #565656;
+  font-size: 1.0rem;
+  height: 45px;
+  margin-top: -5px;
+}
+
+#header .header_sub nav{
+  min-width: 1000px;
+  margin: 5px 30px;
+}
+
+#header .header_sub ul{
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 0;
+}
+
+#header .header_sub a:hover{
+  color: #ff3b3b;
+}
+
+#header .header_sub a{
+  color: #e7e7e7;
+}
+
+#sidemenu{
+  display: block;
+  background-color: #727171;
+  font-size: 0.8rem;
+  min-width: 200px;
+  min-height: 560px;
+  height: auto;
+}
+
+#sidemenu ul{
+  padding: 30px 0  0 30px;
+}
+
+#sidemenu a{
+  color: #fff;
+}
+
+#sidemenu a:hover{
+  opacity: 0.6;
+}
+
+#main{
+  font-size: 0.8rem;
+}
+
+#main .container{
+  display: flex;
+  justify-content: center;
+}
+
+#main h2{
+  display: block;
+  width: 100%;
+  height: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#main .record_shelf{
+  display: flex;
+  flex-wrap: wrap;
+  width: 850px;
+  height: 110px;
+  margin: 200px auto 100px auto;
+}
+
+#main .pickup img{
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  margin: 0 10px;
+  margin-top: -130px;
+}
+
+#main .page_nav{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+  margin: 10px 90px;
+  align-items: center;
+}
+
+#main .pagination-list{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#main .list-item a{
+  display: block;
+  padding: 5px 10px;
+}
+
+#main .list-item.active a{
+  color:  #ff3b3b;
+  text-decoration: underline;
+}
+
+#main .list-item a:hover{
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+#main .panel_list{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 50px;
+  margin-bottom: 30px;
+}
+
+#main .panel{
+  background-color: #959595;
+  width: 17%;
+  min-width: 150px;
+  margin: 0 15px 40px 15px;
+}
+
+#main .panel_head img{
+  object-fit: cover;
+  width: 100%;
+}
+
+#main .panel_body{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#main .panel_body ul{
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+#main .panel_body .title{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#main .panel_body .price{
+  font-size: 1.1rem;
+  float: right;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+#main .page_back{
+  font-size: 1.0rem;
+  margin-top: 30px;
+  margin-left: 90px;
+}
+
+#main .page_back a:hover{
+  opacity: 0.6;
+}
+
+#main .product_detail{
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 50px 0;
+}
+
+#main .img_container{
+  display: flex;
+  flex-direction: column;
+}
+
+#main .img_container img{
+  display: block;
+  object-fit: cover;
+  height: 190px;
+  width: 190px;
+  margin-bottom: 10px;
+  margin-right: 30px;
+}
+
+#main .data_container{
+  display: block;
+  width: 500px;
+  height: auto;
+  font-size: 1.1rem;
+  padding-left: 40px;
+}
+
+#main .data_container ul{
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+#main .data_container li{
+  padding-bottom: 5px;
+}
+
+#main .data_container .title{
+  font-size: 1.4rem;
+}
+
+#main .data_container .price{
+  font-size: 1.2rem;
+}
+
+#main .data_container .button{
+  margin-bottom: 20px;
+}
+
+#main .data_container .button i{
+  margin-right: 5px;
+}
+
+#main .data_container .button i:hover{
+  opacity: 0.6;
+}
+
+#main .icn-like.active{
+  color: #ff3b3b;
+}
+
+#main .form_container{
+  margin: 0 auto 50px auto;
+  min-width: 500px;
+}
+
+#main .form{
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px 40px 50px 40px;
+  border: solid 1px #ababab;
+  overflow: hidden;
+}
+
+#main .form input{
+  background-color: #fff;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 3px;
+  border: none;
+}
+
+#main .form .err_msg{
+  display: block;
+  width: 100%;
+  height: 20px;
+  font-size: 0.8rem;
+  color: #ff3b3b;
+}
+
+#main .form .error input{
+  background-color: #f7dcd9;
+}
+
+#main .form .submit_button{
+  display: inline-block;
+  width: 70px;
+  height: 20px;
+  float: right;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#main .form .submit_button input{
+  background-color: #565656;
+  color: #fff;
+  font-size: 0.7rem;
+  border-radius: 3px;
+}
+
+#main .form .submit_button :hover{
+  opacity: 0.6;
+}
+
+#main .form input[type="checkbox"]{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-top: 10px;
+}
+
+#main .form .savepass{
+  display: inline-block;
+  font-size: 0.8rem;
+  vertical-align: text-top;
+  margin-bottom: 30px;
+}
+
+#main .form .login_msg p{
+  font-size: 0.8rem;
+  margin: 5px 0;
+}
+
+#main .form .login_msg a{
+  display: inline-block;
+  text-decoration: underline;
+}
+
+#main .form .login_msg a:hover{
+  opacity: 0.5;
+}
+
+#footer{
+  background-color: #303030;
+  color: #fff;
+}
+
+#footer .footer_menu{
+  display: block;
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  padding: 20px 0 30px 30px;
+  font-size: 0.8rem;
+}
+
+#footer .footer_menu a{
+  color: #fff;
+}
+
+#footer .footer_menu a:hover{
+  opacity: 0.6;
+}
+
+#footer .sns_icon{
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0;
+}
+
+#footer .sns_icon a{
+  color: #fff;
+}
+
+#footer .sns_icon li{
+  font-size: 1.25rem;
+  margin: 0 15px;
+}
+
+#footer .sns_icon a:hover{
+  opacity: 0.6;
+}
+
+#footer p{
+  height: 30px;
+  font-size: 0.5rem;
+  text-align: center;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.slide_msg{
+  position: fixed;
+  width:100%;
+  height:30px;
+  background: rgba(122,206,230,0.6);
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 30px;
+  margin-top: 0;
+}
