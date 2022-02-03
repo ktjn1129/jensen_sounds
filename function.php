@@ -49,9 +49,9 @@ function isLogin(){
 }
 
 function dbConnect(){
-  $dsn = 'mysql:dbname=jensen_sounds;host=localhost;cahrset=utf8';
-  $user = 'root';
-  $password = 'root';
+  $dsn = 'mysql:dbname=heroku_86ffb9d8d046ab8;host=us-cdbr-east-05.cleardb.net;cahrset=utf8';
+  $user = 'bb22d75c9a05be';
+  $password = 'e237704d';
   $options = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
