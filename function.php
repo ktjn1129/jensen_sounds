@@ -228,14 +228,20 @@ function getFormData($str, $flg = false){
     $method = $_POST;
   }
   global $dbFormData;
+  //DBにデータがある場合
   if(!empty($dbFormData)){
+    //フォームにエラーがある場合
     if(!empty($err_msg[$str])){
+      //フォームにデータがある場合
       if(isset($method[$str])){
+        //入力されたデータを保持
         return sanitize($method[$str]);
       }else{
+        //DBのデータを表示
         return sanitize($dbFormData[$str]);
       }
     }else{
+      //フォームのデータがDBのデータと異なる場合
       if(isset($method[$str]) && $method[$str] !== $dbFormData[$str]){
         return sanitize($method[$str]);
       }else{
@@ -355,7 +361,7 @@ function getPickup(){
     $stmt = queryPost($dbh, $sql, $data);
 
     if($stmt){
-      retuen $stmt->fetchAll();
+      return $stmt->fetchAll();
     }else{
       return false;
     }

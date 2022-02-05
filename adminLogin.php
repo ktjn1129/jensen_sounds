@@ -2,7 +2,7 @@
 require('function.php');
 
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
-debug('「 ログインページ ');
+debug('「 管理者用ログインページ ');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 
@@ -12,17 +12,15 @@ require('auth.php');
 if(!empty($_POST)){
   debug('POST送信があります。');
 
-  $email = $_POST['email'];
+  $admin_id = $_POST['id'];
   $pass = $_POST['pass'];
-  $savepass = (!empty($_POST['savepass'])) ? true : false ;
 
-  validRequired($email, 'email');
+  validRequired($admin_id, 'id');
   validRequired($pass, 'pass');
 
   if(empty($err_msg)){
     debug('未入力チェックが完了しました。');
 
-    validEmail($email, 'email');
     validMaxLen($email, 'email');
     validPass($pass, 'pass');
 
@@ -31,8 +29,8 @@ if(!empty($_POST)){
 
       try{
         $dbh = dbConnect();
-        $sql = 'SELECT password, id FROM users WHERE email = :email AND delete_flg = 0';
-        $data = array(':email' => $email);
+        $sql = 'SELECT password FROM admin WHERE id = :admin_id';
+        $data = array(':admin_id' => $admin_id);
         $stmt = queryPost($dbh, $sql, $data);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -40,20 +38,12 @@ if(!empty($_POST)){
           debug('パスワードがマッチしました。');
           $sesLimit = 60 * 60;
 
-          if($savepass){
-            debug('ログイン保持にチェックがあります。');
-            $_SESSION['login_limit'] = $sesLimit * 24 * 30;
-          }else{
-            debug('ログイン保持にチェックはありません。');
-            $_SESSION['login_limit'] = $sesLimit;
-          }
-
-          $_SESSION['user_id'] = $result['id'];
+          $_SESSION['admin_id'] = $result['id'];
           $_SESSION['login_date'] = time();
 
           debug('セッション変数内容：'.print_r($_SESSION, true));
-          debug('マイページへ遷移します。');
-          header("Location:mypage.php");
+          debug('管理者ページへ遷移します。');
+          header("Location:adminTop.php");
 
         }else{
           debug('パスワードがマッチしませんでした。');
@@ -76,19 +66,16 @@ require('head.php');
   <?php
   require('header.php')
   ?>
-  <p id="js-show-msg" style="display:none;" class="slide_msg">
-    <?php echo getSessionFlash('suc_msg'); ?>
-  </p>
   <main id="main">
     <section class="form_container">
-      <h2>ログイン</h2>
+      <h2>管理者ログイン</h2>
       <form class="form" action="" method="post">
         <div class="err_msg">
           <?php echo getErrMsg('common'); ?>
         </div>
-        <label class="<?php echo addClassErr('email'); ?>">
-          メールアドレス
-          <input type="text" name="email" value="<?php echo getFormData('email'); ?>">
+        <label class="<?php echo addClassErr('id'); ?>">
+          管理者ID
+          <input type="text" name="id" value="<?php echo getFormData('id'); ?>">
         </label>
         <div class="err_msg">
           <?php echo getErrMsg('email'); ?>
@@ -100,16 +87,8 @@ require('head.php');
         <div class="err_msg">
           <?php echo getErrMsg('pass'); ?>
         </div>
-        <label>
-          <input type="checkbox" name="savepass" value="">
-          <span class="savepass">次回以降ログインを省略する</span>
-        </label>
         <div class="submit_button">
           <input type="submit" name="submit" value="ログイン">
-        </div>
-        <div class="login_msg">
-          <p>パスワードを忘れた方は<a href="sendKey.php">こちら</a></p>
-          <p>アカウントの新規登録は<a href="signup.php">こちら</a></p>
         </div>
       </form>
     </section>

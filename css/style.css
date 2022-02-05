@@ -116,15 +116,16 @@ li{
 #main .record_shelf{
   display: flex;
   flex-wrap: wrap;
-  min-width: 850px;
-  height: 110px;
+  width: 900px;
+  min-width: 900px;
+  height: 180px;
   margin: 200px auto 100px auto;
 }
 
 #main .pickup img{
   object-fit: cover;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 3px;
   margin: 0 10px;
   margin-top: -130px;
@@ -274,7 +275,7 @@ li{
 }
 
 #main .form_container{
-  margin: 0 auto 50px auto;
+  margin: 0 auto 100px auto;
   min-width: 500px;
 }
 
