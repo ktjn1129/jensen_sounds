@@ -53,7 +53,7 @@ if(!empty($_POST)){
           $_SESSION['suc_msg'] = SUC01;
 
           $name = ($dbUserData['name'])? $dbUserData['name'] : 'NoName';
-          $from = 'info@jensensounds.com';
+          $from = '';
           $to = $dbUserData['email'];
           $subject = '【パスワード変更完了】| JENSEN SOUNDS';
           $coment = <<<EOT
@@ -65,8 +65,8 @@ if(!empty($_POST)){
 
 ////////////////////////////////////////
 Jensen Sounds カスタマーサポート
-URL http://jensensounds.com/
-E-mail info@jensensounds.com
+URL
+E-mail
 ////////////////////////////////////////
 EOT;
           sendMail($from, $to, $subject, $comment);
@@ -94,7 +94,7 @@ require('head.php');
   <main id="main">
     <div class="container">
       <?php
-      require('sidemenu.php');
+      require('sidebar.php');
       ?>
       <section class="form_container">
         <h2>パスワード変更</h2>

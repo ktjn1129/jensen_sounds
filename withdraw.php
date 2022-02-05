@@ -48,7 +48,7 @@ require('head.php');
   <main id="main">
     <div class="container">
       <?php
-      require('sidemenu.php');
+      require('sidebar.php');
       ?>
       <section class="form_container">
         <h2>アカウント削除</h2>

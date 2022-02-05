@@ -6,20 +6,8 @@ debug('「 トップページ ');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 
-try{
-  $dbh = dbConnect();
-  $sql = 'SELECT * FROM products WHERE pickup_flg = 1 ORDER BY created_date DESC LIMIT 30';
-  $data = array();
-  $stmt = queryPost($dbh, $sql, $data);
 
-  if($stmt){
-    $dbPickupData = $stmt->fetchAll();
-  }
-
-}catch(Exception $e){
-error_log('エラー発生：'.$e->getMessage());
-}
-
+$dbPickupData = getPickup();
 
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
 ?>

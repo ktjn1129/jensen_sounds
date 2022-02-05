@@ -1,4 +1,4 @@
-<aside id="sidemenu">
+<aside id="sidebar">
   <ul>
     <li><a href="mypage.php">ウィッシュリスト</a></li>
     <li><a href="editProfile.php">アカウント情報変更</a></li>

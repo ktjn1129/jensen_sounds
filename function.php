@@ -3,7 +3,6 @@
 ini_set('log_errors','on');
 ini_set('error_log','php.log');
 
-
 $debug_flg = true;
 
 function debug($str){
@@ -28,7 +27,6 @@ ini_set('session.gc_maxlifetime', 60*60*24*30);
 ini_set('session.cookie_lifetime', 60*60*24*30);
 session_start();
 session_regenerate_id();
-
 
 function isLogin(){
   if(!empty($_SESSION['login_date'])){
@@ -74,7 +72,6 @@ function queryPost($dbh, $sql, $data){
   return $stmt;
 }
 
-
 $err_msg = array();
 
 define('MSG01','入力必須です');
@@ -97,7 +94,6 @@ define('SUC01','パスワードの変更が完了しました。');
 define('SUC02','プロフィールの変更が完了しました。');
 define('SUC03','メールを送信しました。');
 define('SUC04','商品の登録が完了しました。');
-
 
 function validRequired($str, $key){
   if($str == null){
@@ -344,9 +340,27 @@ function getProductList($category, $currentMinNum = 1, $span = 20){
     }else{
       return false;
     }
-
   }catch(Exception $e){
     error_log('エラー発生：'.$e->getMessage());
+  }
+}
+
+function getPickup(){
+  debug('ピックアップ商品リストを取得します。');
+
+  try{
+    $dbh = dbConnect();
+    $sql = 'SELECT * FROM products WHERE pickup_flg = 1 ORDER BY created_date DESC LIMIT 30';
+    $data = array();
+    $stmt = queryPost($dbh, $sql, $data);
+
+    if($stmt){
+      retuen $stmt->fetchAll();
+    }else{
+      return false;
+    }
+  }catch(Exception $e){
+  error_log('エラー発生：'.$e->getMessage());
   }
 }
 
@@ -513,5 +527,4 @@ function showImg($path){
     return $path;
   }
 }
-
 ?>

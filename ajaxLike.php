@@ -29,7 +29,6 @@ if(isset($_POST['productId'])) && isset($_SESSION['user_id']) && isLogin()){
       $data = array(':p_id' => $p_id, ':u_id' => $_SESSION['user_id'], ':date' => date('Y-m-d H:i:s'));
       $stmt = queryPost($dbh, $sql, $data);
     }
-
   }catch (Exception $e){
     error_log('エラー発生：'.$e->getMessage());
   }
