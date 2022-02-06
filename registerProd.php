@@ -80,99 +80,104 @@ require('head.php');
   require('header.php')
   ?>
   <main id="main">
-    <section class="register_product_form">
-      <h2>商品登録</h2>
-      <form class="form" action="" method="post">
-        <div class="err_msg">
-          <?php echo getErrMsg('common'); ?>
-        </div>
-        <label class="<?php echo addClassErr('title'); ?>">
-          曲名
-          <input type="text" name="title" value="<?php echo getFormData('title'); ?>">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('title'); ?>
-        </div>
-        <label class="<?php echo addClassErr('artist'); ?>">
-          アーティスト名
-          <input type="text" name="artist" value="<?php echo getFormData('artist'); ?>">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('artist'); ?>
-        </div>
-        <label class="<?php echo addClassErr('label'); ?>">
-          レーベル名
-          <input type="text" name="label" value="<?php echo getFormData('label'); ?>">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('label'); ?>
-        </div>
-        <label class="<?php echo addClassErr('category'); ?>">
-          <span>ジャンル</span>
-          <select name="category_id">
-            <option value="0" <?php if(getFormData('category_id') == 0){ echo 'selected'; } ?>>
-              選択してください
-            </option>
-            <?php foreach ($dbCategoryData as $key => $value) { ?>
-              <option value="<?php echo $value['id'] ?>" <?php if(getFormData('category_id') == $value['id']){ echo 'selected'; } ?>>
-                <?php echo $value['name'] ?>
+    <div class="container">
+      <?php
+      require('sidebar.php');
+      ?>
+      <section class="register_product_form">
+        <h2>商品登録</h2>
+        <form class="form" action="" method="post">
+          <div class="err_msg">
+            <?php echo getErrMsg('common'); ?>
+          </div>
+          <label class="<?php echo addClassErr('title'); ?>">
+            曲名
+            <input type="text" name="title" value="<?php echo getFormData('title'); ?>">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('title'); ?>
+          </div>
+          <label class="<?php echo addClassErr('artist'); ?>">
+            アーティスト名
+            <input type="text" name="artist" value="<?php echo getFormData('artist'); ?>">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('artist'); ?>
+          </div>
+          <label class="<?php echo addClassErr('label'); ?>">
+            レーベル名
+            <input type="text" name="label" value="<?php echo getFormData('label'); ?>">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('label'); ?>
+          </div>
+          <label class="<?php echo addClassErr('category'); ?>">
+            <span>ジャンル</span>
+            <select name="category_id">
+              <option value="0" <?php if(getFormData('category_id') == 0){ echo 'selected'; } ?>>
+                選択してください
               </option>
-            <?php } ?>
-          </select>
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('category_id'); ?>
-        </div>
-        <label class="<?php echo addClassErr('format'); ?>">
-          フォーマット
-          <input type="text" name="format" value="<?php echo getFormData('format'); ?>">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('label'); ?>
-        </div>
-        <label class="<?php echo addClassErr('price'); ?>">
-          価格(円)
-          <input type="text" name="price" value="<?php echo getFormData('price'); ?>">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('price'); ?>
-        </div>
-        <label class="<?php echo addClassErr('caption'); ?>">
-          <span>商品説明</span>
-          <textarea name="caption" rows="10" cols="30" style="width:100%; height:150px;"><?php echo getFormData('caption'); ?></textarea>
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('caption'); ?>
-        </div>
-        <label class="<?php echo addClassErr('pic1'); ?>">
-          メイン画像
-          <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-          <input type="file" name="pic1" class="input_file">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('pic1'); ?>
-        </div>
-        <label class="<?php echo addClassErr('pic2'); ?>">
-          サブ画像
-          <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-          <input type="file" name="pic2" class="input_file">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('pic2'); ?>
-        </div>
-        <label class="<?php echo addClassErr('pic3'); ?>">
-          サブ画像
-          <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-          <input type="file" name="pic3" class="input_file">
-        </label>
-        <div class="err_msg">
-          <?php echo getErrMsg('pic3'); ?>
-        </div>
-        <div class="submit_button">
-          <input type="submit" name="submit" value="登録">
-        </div>
-      </form>
-    </section>
+              <?php foreach ($dbCategoryData as $key => $value) { ?>
+                <option value="<?php echo $value['id'] ?>" <?php if(getFormData('category_id') == $value['id']){ echo 'selected'; } ?>>
+                  <?php echo $value['name'] ?>
+                </option>
+              <?php } ?>
+            </select>
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('category_id'); ?>
+          </div>
+          <label class="<?php echo addClassErr('format'); ?>">
+            フォーマット
+            <input type="text" name="format" value="<?php echo getFormData('format'); ?>">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('label'); ?>
+          </div>
+          <label class="<?php echo addClassErr('price'); ?>">
+            価格(円)
+            <input type="text" name="price" value="<?php echo getFormData('price'); ?>">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('price'); ?>
+          </div>
+          <label class="<?php echo addClassErr('caption'); ?>">
+            <span>商品説明</span>
+            <textarea name="caption" rows="10" cols="30" style="width:100%; height:150px;"><?php echo getFormData('caption'); ?></textarea>
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('caption'); ?>
+          </div>
+          <label class="<?php echo addClassErr('pic1'); ?>">
+            メイン画像
+            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+            <input type="file" name="pic1" class="input_file">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('pic1'); ?>
+          </div>
+          <label class="<?php echo addClassErr('pic2'); ?>">
+            サブ画像
+            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+            <input type="file" name="pic2" class="input_file">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('pic2'); ?>
+          </div>
+          <label class="<?php echo addClassErr('pic3'); ?>">
+            サブ画像
+            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+            <input type="file" name="pic3" class="input_file">
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('pic3'); ?>
+          </div>
+          <div class="submit_button">
+            <input type="submit" name="submit" value="登録">
+          </div>
+        </form>
+      </section>
+    </div>
   </main>
   <?php
   require('footer.php');
