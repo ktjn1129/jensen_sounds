@@ -122,12 +122,18 @@ li{
   margin: 200px auto 100px auto;
 }
 
+#main .record_shelf a{
+  display: block;
+  width: 160px;
+  height: 30px;
+  margin: 0 10px;
+}
+
 #main .pickup img{
   object-fit: cover;
   width: 160px;
   height: 160px;
   border-radius: 3px;
-  margin: 0 10px;
   margin-top: -130px;
 }
 
