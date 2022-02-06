@@ -21,7 +21,7 @@ if(!empty($_POST)){
   if(empty($err_msg)){
     debug('未入力チェックが完了しました。');
 
-    validMaxLen($email, 'email');
+    validMaxLen($admin_id, 'id');
     validPass($pass, 'pass');
 
     if(empty($err_msg)){
