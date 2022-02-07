@@ -47,9 +47,14 @@ function isLogin(){
 }
 
 function dbConnect(){
-  $dsn = 'mysql:dbname=heroku_86ffb9d8d046ab8;host=us-cdbr-east-05.cleardb.net;cahrset=utf8';
-  $user = 'bb22d75c9a05be';
-  $password = 'e237704d';
+  //ローカル環境
+  $dsn = 'mysql:dbname=jensen_sounds;host=localhost;charset=utf8';
+  $user = 'root';
+  $password = 'root';
+  //Heroku
+  // $dsn = 'mysql:dbname=heroku_86ffb9d8d046ab8;host=us-cdbr-east-05.cleardb.net;cahrset=utf8';
+  // $user = 'bb22d75c9a05be';
+  // $password = 'e237704d';
   $options = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -288,7 +293,7 @@ function getCategory(){
       return false;
     }
   }catch(Exception $e){
-    error.log('エラー発生：'.$e->getMessage());
+    error_log('エラー発生：'.$e->getMessage());
   }
 }
 
@@ -318,9 +323,9 @@ function getProductList($category, $currentMinNum = 1, $span = 20){
 
   try{
     $dbh = dbConnect();
-    $sql = 'SELECT id FROM products';
+    $sql = 'SELECT id FROM products WHERE delete_flg = 0';
     if(!empty($category)){
-      $sql .= ' WHERE category_id = '.$category;
+      $sql .= ' AND category_id = '.$category;
     }
     $data = array();
     $stmt = queryPost($dbh, $sql, $data);
@@ -332,9 +337,9 @@ function getProductList($category, $currentMinNum = 1, $span = 20){
       return false;
     }
 
-    $sql = 'SELECT * FROM products';
+    $sql = 'SELECT * FROM products WHERE delete_flg = 0';
     if(!empty($category)){
-      $sql .= ' WHERE category_id = '.$category;
+      $sql .= ' AND category_id = '.$category;
     }
     $sql .= ' LIMIT '.$span.' OFFSET '.$currentMinNum;
     $data = array();
@@ -356,7 +361,7 @@ function getPickup(){
 
   try{
     $dbh = dbConnect();
-    $sql = 'SELECT * FROM products WHERE pickup_flg = 1 ORDER BY created_date DESC LIMIT 30';
+    $sql = 'SELECT * FROM products WHERE pickup_flg = 1 AND delete_flg = 0 ORDER BY created_date DESC LIMIT 30';
     $data = array();
     $stmt = queryPost($dbh, $sql, $data);
 
@@ -376,7 +381,7 @@ function getWishlist($u_id){
 
   try{
     $dbh = dbConnect();
-    $sql = 'SELECT * FROM wishlist AS w LEFT JOIN product AS p ON w.product_id = p.id WHERE w.user_id = :u_id';
+    $sql = 'SELECT * FROM wishlist AS w LEFT JOIN product AS p ON w.product_id = p.id WHERE w.user_id = :u_id AND p.delete_flg = 0';
     $data = array(':u_id' => $u_id);
     $stmt = queryPost($dbh, $sql, $data);
 
