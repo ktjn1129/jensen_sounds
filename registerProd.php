@@ -6,7 +6,7 @@ debug('「 商品登録ページ ');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 
-require('auth.php');
+require('adminAuth.php');
 
 
 $dbCategoryData = getCategory();
@@ -82,9 +82,9 @@ require('head.php');
   <main id="main">
     <div class="container">
       <?php
-      require('sidebar.php');
+      require('adminSide.php');
       ?>
-      <section class="register_product_form">
+      <section class="form_container">
         <h2>商品登録</h2>
         <form class="form" action="" method="post">
           <div class="err_msg">
@@ -112,7 +112,7 @@ require('head.php');
             <?php echo getErrMsg('label'); ?>
           </div>
           <label class="<?php echo addClassErr('category'); ?>">
-            <span>ジャンル</span>
+            <span style="margin-right:10px;">ジャンル</span>
             <select name="category_id">
               <option value="0" <?php if(getFormData('category_id') == 0){ echo 'selected'; } ?>>
                 選択してください
@@ -140,6 +140,16 @@ require('head.php');
           </label>
           <div class="err_msg">
             <?php echo getErrMsg('price'); ?>
+          </div>
+          <label class="<?php echo addClassErr('pickup'); ?>">
+            <span style="margin-right:10px;">ピックアップ</span>
+            <select name="pickup">
+              <option value="0" <?php if(getFormData('pickup') == 0){ echo 'selected'; } ?>>追加しない</option>
+              <option value="1" <?php if(getFormData('pickup') == 1){ echo 'selected'; } ?>>追加する</option>
+            </select>
+          </label>
+          <div class="err_msg">
+            <?php echo getErrMsg('pickup'); ?>
           </div>
           <label class="<?php echo addClassErr('caption'); ?>">
             <span>商品説明</span>
