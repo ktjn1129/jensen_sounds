@@ -6,16 +6,16 @@ debug('「 管理者用ログインページ ');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 
-require('auth.php');
+require('adminAuth.php');
 
 
 if(!empty($_POST)){
   debug('POST送信があります。');
 
-  $admin_id = $_POST['id'];
+  $admin_id = $_POST['admin_id'];
   $pass = $_POST['pass'];
 
-  validRequired($admin_id, 'id');
+  validRequired($admin_id, 'admin_id');
   validRequired($pass, 'pass');
 
   if(empty($err_msg)){
@@ -29,16 +29,14 @@ if(!empty($_POST)){
 
       try{
         $dbh = dbConnect();
-        $sql = 'SELECT password FROM admin WHERE id = :admin_id';
+        $sql = 'SELECT password FROM admin WHERE admin_id = :admin_id';
         $data = array(':admin_id' => $admin_id);
         $stmt = queryPost($dbh, $sql, $data);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if(!empty($result) && password_verify($pass, array_shift($result))){
           debug('パスワードがマッチしました。');
-          $sesLimit = 60 * 60;
-
-          $_SESSION['admin_id'] = $result['id'];
+          $_SESSION['login_limit'] = 60 * 60;
           $_SESSION['login_date'] = time();
 
           debug('セッション変数内容：'.print_r($_SESSION, true));
@@ -73,14 +71,14 @@ require('head.php');
         <div class="err_msg">
           <?php echo getErrMsg('common'); ?>
         </div>
-        <label class="<?php echo addClassErr('id'); ?>">
+        <label class="<?php echo addClassErr('admin_id'); ?>">
           管理者ID
-          <input type="text" name="id" value="<?php echo getFormData('id'); ?>">
+          <input type="text" name="admin_id" value="<?php echo getFormData('admin_id'); ?>">
         </label>
         <div class="err_msg">
-          <?php echo getErrMsg('email'); ?>
+          <?php echo getErrMsg('admin_id'); ?>
         </div>
-        <label class="<?php echo addClassErr('email'); ?>">
+        <label class="<?php echo addClassErr('pass'); ?>">
           パスワード
           <input type="password" name="pass" value="">
         </label>

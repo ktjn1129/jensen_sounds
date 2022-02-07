@@ -6,7 +6,7 @@ debug('「 管理者用トップページ ');
 debug('「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「「');
 debugLogStart();
 
-require('auth.php');
+require('adminAuth.php');
 
 
 debug('画面表示処理終了 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
@@ -27,6 +27,8 @@ require('head.php');
       <?php
       require('adminSide.php');
       ?>
+      <section class="form_container">
+      </section>
     </div>
   </main>
   <?php
