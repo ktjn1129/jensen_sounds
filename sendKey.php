@@ -85,7 +85,7 @@ require('head.php');
   require('header.php')
   ?>
   <main id="main">
-    <section class="reissue_pass_form">
+    <section class="form_container">
       <h2>パスワード再発行</h2>
       <form class="form" action="" method="post">
         <p style="font-size: 0.9rem">ご指定のメールアドレスへパスワード再発行用のURLと認証キーを送信します。</p>

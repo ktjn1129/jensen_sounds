@@ -28,9 +28,6 @@ require('head.php');
   require('header.php')
   ?>
   <main id="main">
-    <div class="page_back">
-      <a href="prodList.php<?php echo appendGetParam(array('p_id')); ?>">&lt; Back</a>
-    </div>
     <section class="product_detail">
       <div class="img_container">
         <img src="<?php echo showImg(sanitize($dbProductData['pic1'])); ?>">

@@ -117,7 +117,7 @@ require('head.php');
             <?php echo getErrMsg('pass_new'); ?>
           </div>
           <label class="<?php echo addClassErr('pass_new_re'); ?>">
-            新しいパスワード<span style="font-size: 0.9rem"> (再入力)</span>
+            新しいパスワード<span style="font-size: 0.8rem"> (再入力)</span>
             <input type="password" name="pass_new_re" value="">
           </label>
           <div class="err_msg">

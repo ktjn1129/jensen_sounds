@@ -35,7 +35,7 @@ if(!empty($_POST)){
 
       try{
         $dbh = dbConnect();
-        $sql = 'INSERT INTO users (email, pass, created_date) VALUES (:email, :pass, :created_date)';
+        $sql = 'INSERT INTO users (email, password, created_date) VALUES (:email, :pass, :created_date)';
         $data = array(':email' => $email, ':pass' => password_hash($pass, PASSWORD_DEFAULT),
                       ':created_date' => date('Y-m-d H:i:s'));
         $stmt = queryPost($dbh, $sql, $data);
@@ -68,7 +68,7 @@ require('head.php');
   require('header.php')
   ?>
   <main id="main">
-    <section class="signup_form">
+    <section class="form_container">
       <h2>アカウント新規登録</h2>
       <form class="form" action="" method="post">
         <div class="err_msg">
@@ -89,7 +89,7 @@ require('head.php');
           <?php echo getErrMsg('pass'); ?>
         </div>
         <label class="<?php echo addClassErr('pass_re'); ?>">
-          パスワード<span style="font-size: 0.9rem"> (再入力)</span>
+          パスワード<span style="font-size: 0.8rem"> (再入力)</span>
           <input type="password" name="pass_re" value="">
         </label>
         <div class="err_msg">
